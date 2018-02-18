@@ -159,7 +159,7 @@ function viewEventDetails(event) {
           if (val.uid === firebase.auth().currentUser.uid && ('event' + i) == event.id) {
 	      
 	  var content = '';
-          content += '<div class="list-group-item list-group-item-action flex-column align-items-start">';
+          content += '<div class="list-group-item list-group-item-action flex-column align-items-start onclick="viewEventDetails(this)" id=detail' + i + '>';
           content += '<div class="d-flex w-100 justify-content-between">';
           content += `<h5 class="mb-1">${val.title}</h5>`;
           content += `<p class="text-muted">${val.place_name}</p>`;
@@ -170,6 +170,7 @@ function viewEventDetails(event) {
 	  content += `<p class="text-muted">Discord: ${val.discord}</p>`;
           content += `<p class="mb-1">${val.details}</p>`;
           content += '</div>';
+          content += '<button type="button" class="btn btn-default" id="delete">Delete Event</button>'
 	  document.getElementById('detailContainer').innerHTML += content;
 	}
 	i += 1;   
