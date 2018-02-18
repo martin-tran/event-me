@@ -9,8 +9,8 @@
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway:400,800">
     <link rel='stylesheet' href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    <link rel="stylesheet" href="/css/bootstrap.css">
-    <link rel="stylesheet" href="/css/styles.css">
+    <link rel="stylesheet" href="./css/bootstrap.css">
+    <link rel="stylesheet" href="./css/styles.css">
   </head>
 
   <body>
@@ -41,13 +41,16 @@
         </div>
       </nav>
 
-      <div class="jumbotron">
-        <h1 class="display-4">Explore. Discover. Connect.</h1>
-        <p class="lead">Welcome to EventMe! Connecting people with more people.</p>
+      <div class="jumbotron d-flex w-100 justify-content-between">
+        <div>
+          <h1 class="display-4">Explore. Discover. Connect.</h1>
+          <p class="lead">Welcome to EventMe! Connecting people with more people.</p>
+          <p class="lead">
+            <a class="btn btn-primary btn-lg" href="getstarted.html" role="button">Get started</a>
+          </p>
+        </div>
+        <img src="./assets/logo.png" alt="logo" width="16%" height="16%">
         
-        <p class="lead">
-          <a class="btn btn-primary btn-lg" href="getstarted.html" role="button">Get started</a>
-        </p>
       </div>
 
       <div id="createevent" class="row mb-4">
@@ -133,11 +136,25 @@
 
       <div id="about" class="jumbotron">
         <h2 class="display-6">About</h2>
+        <h4>The Problem</h4>
         <p>People walk around everyday surrounded by events ranging from free and fun to professional and educational. However, these events go missed simply because the greater public is not aware of them.</p>
+        <h4>Our Solution</h4>
+        <p>EventMe!</p>
       </div>
 
       <div id="contact" class="jumbotron">
         <h2 class="display-6">Contact Us</h2>
+        <div class="col">
+          <div class="row">
+            <p>Developers: Alan, Calvin, Robert, Martin</p>
+          </div>
+          <div class="row">
+            <p><span class="fa fa-map-marker"></span> University of Calgary</p>
+          </div>
+          <div class="row">
+            <p><span class="fa fa-github"></span><a class="text-primary" href="https://github.com/martin-tran/event-me" target="_blank"> https://github.com/martin-tran/event-me</a></p>
+          </div>
+        </div>
       </div>
     </div>
 
@@ -147,9 +164,9 @@
     <script src="https://www.gstatic.com/firebasejs/4.9.1/firebase-database.js"></script>
 
     <script src="https://apis.google.com/js/platform.js" async defer></script>
-    <script src="/js/jquery.min.js"></script>
-    <script src="/js/popper.min.js"></script>
-    <script src="/js/bootstrap.min.js"></script>
-    <script src="/js/index.js"></script>
+    <script src="./js/jquery.min.js"></script>
+    <script src="./js/popper.min.js"></script>
+    <script src="./js/bootstrap.min.js"></script>
+    <script src="./js/index.js"></script>
   </body>
 </html>

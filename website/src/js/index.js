@@ -102,7 +102,9 @@ function getEventsFromFirebase(event) {
         content += `<h5 class="mb-1">${val.title}</h5>`;
         content += `<small class="text-muted">${val.place_name}</small>`;
         content += '</div>';
-        content += `<small class="text-muted">Proximity: ${val.proximity}</small>`;
+        content += `<div><small class="text-muted">Proximity: ${val.proximity}</small></div>`;
+        content += `<div><small class="text-muted">Discord: ${val.discord}</small></div>`;
+        content += `<div><small class="text-muted">Website: ${val.website}</small></div>`;
         content += `<p class="mb-1">${val.details}</p>`;
         content += '</div>';
         document.getElementById('eventContainer').innerHTML += content;
