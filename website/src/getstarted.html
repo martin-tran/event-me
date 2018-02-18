@@ -39,12 +39,86 @@
         </div>
       </nav>
 
-      <div class="row">
-        div class="col-sm-8">Getting started is easy!</div>
+      <div id="getstarted_top" class="jumbotron">
+        <h2>Get started</h2>
+        <p>Getting started is easy!  If you're looking for events, please download our Android app!
+        </p>
+        <p>
+        <a class="btn btn-primary btn-md" href = # role="button">App on Google Play Store</a>
+        </p>
+        <p> 
+        </p
       </div>
 
+      <div id="getstarted_eventhost">
+        <h3>Event creators</h3>
+        <p>You can get your event up and broadcasting in seconds.  Click the <i class="fa fa-google"></i> in the top right hand corner to log in.
+        </p>All of your events will be secured under your Google account, where they can be revisited or edited later.
+        </p>Once you're signed in, you can start filling out a short form.  You're almost done!
+        </p>
+        <div class = "card-deck">
+          <div class = "card">
+            <div class="card-body text-left">
+              <h5 class="card-title">The form</h5>
+              <form id="eventForm">
+                <div class="form-group">
+                  <label for="inputTitle">Title*</label>
+                  <input type="text" class="form-control" id="inputTitle" placeholder="Your event name" disabled>
+                </div>
+                <div class="form-group">
+                  <label for="inputProximity">Proximity (m)*</label>
+                  <input type="text" class="form-control" id="inputProximity" placeholder="Range of your event" disabled>
+                </div>
+                <div class="form-group">
+                  <label for="inputLocation">Location*</label>
+                  <input type="text" class="form-control" id="inputLocation" placeholder="Latitude,Longitude" disabled>
+                </div>
+                <div class="form-group">
+                  <label for="inputDiscord">Discord</label>
+                  <input type="url" class="form-control" id="inputDiscord" placeholder="URL to your discord chatroom" disabled>
+                </div>
+                <div class="form-group">
+                  <label for="inputWebsite">Website</label>
+                  <input type="url" class="form-control" id="inputWebsite" placeholder="URL to your website" disabled>
+                </div>
+                <button type="submit" class="btn btn-primary" disabled>Submit</button>
+              </form>
+            </div>
+          </div>
 
+          <div class="card h-100">
+            <div class="card-body text-left">
+              <h5>Form helper</h5>
+              <p>Fields with a * beside them are <strong>required</strong>, like the Title* of your event</p>
+              <p>Proximity will be used to tell us whether someone enters or exits your event.</p>
+              <p><strong>Push notifications</strong> are delivered to users of our app based on the proximity.</p>
+              <p>An optional online chatroom (Discord) and your event site can be provided. </p>
+            </div>
+          </div>
 
+        </div>
+
+      </div>
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    </div>
 
     </body>
 </html>
