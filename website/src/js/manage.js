@@ -11,6 +11,78 @@ var provider = new firebase.auth.GoogleAuthProvider();
 
 var setUser = false;
 
+function validTitle(title) {
+  return title !== '';
+}
+
+function validNumber(number) {
+  return number !== '' && !isNaN(number);
+}
+
+function validLocation(location) {
+  return location.length == 2 && (validNumber(location[0]) && validNumber(location[1]));
+}
+
+document.getElementById('newEvent').addEventListener('click', openNewEventForm);
+function openNewEventForm(event) {
+  event.preventDefault();
+
+  if (!setUser) {
+    document.getElementById('formModalStatus').innerHTML = '<p>Please login above to make an event</p>';
+    $('#formModal').modal();
+  }
+    $('#formModal').modal();
+}
+
+document.getElementById('submit').addEventListener('click', addEventToFirebase);
+function addEventToFirebase(event) {
+  event.preventDefault();
+  var titl = document.getElementById('inputTitle').value;
+  var proxim = document.getElementById('inputProximity').value;
+  var loc = document.getElementById('inputLocation').value.split(',');
+  var disc = document.getElementById('inputDiscord').value;
+  var site = document.getElementById('inputWebsite').value;
+  var place = document.getElementById('inputPlaceName').value;
+  var dets = document.getElementById('inputDetails').value;
+
+    if (!validTitle(titl) || !validNumber(proxim) || !validLocation(loc)) {
+	if (!validTitle(titl)) {
+	    if (!document.getElementById('inputTitleLabel').innerHTML.endsWith('</font>')) {
+		document.getElementById('inputTitleLabel').innerHTML += ' <font color="red">Invalid title!</font>';
+	    }
+	}
+	if (!validNumber(proxim)) {
+	    if (!document.getElementById('inputProximityLabel').innerHTML.endsWith('</font>')) {
+		document.getElementById('inputProximityLabel').innerHTML += ' <font color="red">Invalid proximity!</font>';
+	    }
+	}
+	if (!validLocation(loc)) {
+	    if (!document.getElementById('inputLocationLabel').innerHTML.endsWith('</font>')) {
+		document.getElementById('inputLocationLabel').innerHTML += ' <font color="red">Invalid location!</font>';
+	    }
+	}
+	$('#formModal').modal();
+	
+    } else {
+	document.getElementById('formModalStatus').innerHTML = '<p>Event created!</p>';
+
+	firebase.database().ref('events').push({
+            title: titl,
+            proximity: Number(proxim),
+            latitude: Number(loc[0]),
+            longitude: Number(loc[1]),
+            discord: disc,
+            website: site,
+            place_name: place,
+            details: dets,
+            uid: firebase.auth().currentUser.uid
+
+	});
+    }
+    $('#formModal').modal();
+
+}
+
 document.getElementById('navSignin').addEventListener('click', googleAuthentication);
 function googleAuthentication(event) {
   if (!setUser) {

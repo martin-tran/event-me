@@ -22,9 +22,9 @@
         </button>
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
           <ul class="navbar-nav ml-auto">
-              <li class="nav-item">
-                <a class="nav-link" href="index.html">Home</a>
-              </li>
+            <li class="nav-item">
+              <a class="nav-link" href="index.html">Home</a>
+            </li>
             <li class="nav-item">
               <a class="nav-link" href="index.html#about">About</a>
             </li>
@@ -45,7 +45,7 @@
         <h1 class="display-4">Manage Account</h1>
 
         <p class="lead">
-          <a class="btn btn-secondary btn-lg" href="#" role="button">New Event</a>
+          <button type="submit" class="btn btn-primary" id="newEvent">New Event</button>
         </p>
         <div class="row mb-4">
           <div class="col">
@@ -77,6 +77,59 @@
       </div>
     </div>
 
+    <div class="modal fade" id="formModal" role="dialog">
+      <div class="modal-dialog">
+        <!-- Modal content-->
+        <div class="modal-content">
+          <div class="modal-header">
+            <h4 class="modal-title">Event Submission</h4>
+            <button type="button" class="close" data-dismiss="modal">&times;</button>
+          </div>
+          <div id="formModalStatus" class="modal-body">
+            <form id="eventForm">
+              <div class="form-group">
+                <label for="inputTitle" id="inputTitleLabel">Title*</label>
+                <input type="text" class="form-control" id="inputTitle" placeholder="New Event">
+                <small id="titleHelp" class="form-text text-muted">Enter a fun name!</small>
+              </div>
+              <div class="form-group">
+                <label for="inputProximity" id="inputProximityLabel">Proximity (m)*</label>
+                <input type="text" class="form-control" id="inputProximity" placeholder="e.g. 100">
+              </div>
+              <div class="form-group">
+                <label for="inputLocation" id="inputLocationLabel">Location*</label>
+                <input type="text" class="form-control" id="inputLocation" placeholder="e.g. 51.5234,-114.5132">
+              </div>
+              <div class="form-group">
+                <label for="inputDiscord">Discord</label>
+                <input type="url" class="form-control" id="inputDiscord" placeholder="">
+              </div>
+              <div class="form-group">
+                <label for="inputWebsite">Website</label>
+                <input type="url" class="form-control" id="inputWebsite" placeholder="">
+              </div>
+              <div class="form-group">
+                <a class="card-link text-secondary" href="#collapse" data-toggle="collapse">More options...</a>
+                <div id="collapse" class="collapse">
+                  <div class="form-group">
+                    <label for="inputPlaceName">Place Name</label>
+                    <input type="text" class="form-control" id="inputPlaceName" placeholder="">
+                  </div>
+                  <div class="form-group">
+                    <label for="inputDetails">Details</label>
+                    <textarea class="form-control" id="inputDetails" rows="3" style="resize:none"></textarea>
+                  </div>
+                </div>
+              </div>
+            </form>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-default" id="submit">Submit</button>
+            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+          </div>
+        </div>
+      </div>
+    </div>
 
     <script src="https://www.gstatic.com/firebasejs/4.9.1/firebase.js"></script>
     <script src="https://www.gstatic.com/firebasejs/4.9.1/firebase-app.js"></script>
