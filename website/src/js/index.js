@@ -41,14 +41,13 @@ function addEventToFirebase(event) {
     if (!validTitle(titl) || !validNumber(proxim) || !validLocation(loc)) {
       document.getElementById('formModalStatus').innerHTML = '<p>Please check values.</p>';
     } else {
-      console.log('being sent');
       document.getElementById('formModalStatus').innerHTML = '<p>Event created!</p>';
 
       firebase.database().ref('events').push({
         title: titl,
-        proximity: proxim,
-        latitude: loc[0],
-        longitude: loc[1],
+        proximity: Number(proxim),
+        latitude: Number(loc[0]),
+        longitude: Number(loc[1]),
         discord: disc,
         website: site,
         place_name: place,
@@ -60,7 +59,7 @@ function addEventToFirebase(event) {
   }
 }
 
-document.getElementById('signin').addEventListener('click', googleAuthentication);
+document.getElementById('navSignin').addEventListener('click', googleAuthentication);
 function googleAuthentication(event) {
   if (!setUser) {
     setUser = true;
@@ -69,7 +68,8 @@ function googleAuthentication(event) {
       // result.credential.accessToken;
       // result.user;
       // firebase.auth().currentUser.uid;
-      document.getElementById('signin').innerHTML = 'Sign Out <i class="fa fa-google"></i>';
+      document.getElementById('navSignin').innerHTML = 'Sign Out <i class="fa fa-google"></i>';
+      document.getElementById('navCreate').innerHTML = '<a class="nav-link" href="manage.html" target="_self">Manage Events</a>';
     }).catch(function(error) {
       console.log(error.code);
       console.log(error.message);
@@ -80,8 +80,8 @@ function googleAuthentication(event) {
     console.log('logging out');
     firebase.auth().signOut().then(function() {
       setUser = false;
-      document.getElementById('signin').innerHTML = 'Sign In <i class="fa fa-google"></i>';
-      console.log(firebase.auth().currentUser.uid);
+      document.getElementById('navSignin').innerHTML = 'Sign In <i class="fa fa-google"></i>';
+      document.getElementById('navCreate').innerHTML = '<a class="nav-link" href="#createevent" target="_self">Create Event</a>';
     }).catch(function(error) {
       // An error happened.
     });
