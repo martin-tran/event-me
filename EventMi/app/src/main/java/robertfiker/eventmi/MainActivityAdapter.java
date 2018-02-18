@@ -127,7 +127,14 @@ public class MainActivityAdapter extends BaseExpandableListAdapter {
         TextView eventProximity = convertView.findViewById(R.id.text_proximity);
         TextView eventDetails = convertView.findViewById(R.id.text_details);
         EventInfo event = getGroup(groupPosition);
-        String sourceString = "<b>"+"Distance: "+"</b>"+Integer.toString(event.getProximity())+"m";
+        Location eventLoc = new Location("");
+        eventLoc.setLongitude(event.getLongitude());
+        eventLoc.setLatitude(event.getLatitude());
+        Location myLoc = new Location("");
+        myLoc.setLongitude(longitude);
+        myLoc.setLatitude(latitude);
+
+        String sourceString = "<b>"+"Distance: "+"</b>"+Float.toString(myLoc.distanceTo(eventLoc))+"m";
         eventProximity.setText(Html.fromHtml(sourceString));
         sourceString = "<b>"+"Details: "+"</b>"+event.getDetails();
         eventDetails.setText(Html.fromHtml(sourceString));
