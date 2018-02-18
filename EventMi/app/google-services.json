@@ -1,0 +1,42 @@
+{
+  "project_info": {
+    "project_number": "405539717883",
+    "firebase_url": "https://eventmi-c39d5.firebaseio.com",
+    "project_id": "eventmi-c39d5",
+    "storage_bucket": "eventmi-c39d5.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:405539717883:android:6677c29a7f8aa6bd",
+        "android_client_info": {
+          "package_name": "robertfiker.eventmi"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "405539717883-7r6677itgbglb14p5be1jfltdj2pkcdk.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyARWAEB3FyR7lDTlO_slFL1wGx6ZDXgNTI"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
