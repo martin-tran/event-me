@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html class="no-js" lang="en">
+  <head>
+    <title>EventMe</title>
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="google-signin-client_id" content="1017799760497-vu5vutq3jbijb5b9l838uai0db49v9mu.apps.googleusercontent.com">
+
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway:400,800">
+    <link rel='stylesheet' href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="/css/bootstrap.css">
+    <link rel="stylesheet" href="/css/styles.css">
+  </head>
+
+  <body>
+    <div class="container">
+      <nav class="navbar navbar-fixed-top navbar-expand-lg navbar-dark bg-primary">
+        <a class="navbar-brand" href="#">EventMe</a>
+        
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav ml-auto">
+            <li class="nav-item">
+              <a class="nav-link" href="#">Home</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#about">About</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#contact">Contact</a>
+            </li>
+            <li class="nav-item">
+              <a id="signin" class="nav-link" href="#">
+                Sign In 
+                <i class="fa fa-google"></i>
+              </a>
+            </li>
+          </ul>
+        </div>
+      </nav>
+
+      <div class="jumbotron">
+        <h1 class="display-4">Explore. Discover. Connect.</h1>
+        <p class="lead">Welcome to EventMe! Connecting people with more people.</p>
+        
+        <p class="lead">
+          <a class="btn btn-primary btn-lg" href="#" role="button">Get started</a>
+        </p>
+      </div>
+
+      <div class="row mb-4">
+        <div class="col">
+          <div class="card">
+            <div class="card-body text-left">
+              <h5 class="card-title">Create Event</h5>
+              <form id="eventForm">
+                <div class="form-group">
+                  <label for="inputTitle">Title*</label>
+                  <input type="text" class="form-control" id="inputTitle" placeholder="New Event">
+                  <small id="titleHelp" class="form-text text-muted">Enter a fun name!</small>
+                </div>
+                <div class="form-group">
+                  <label for="inputProximity">Proximity*</label>
+                  <input type="text" class="form-control" id="inputProximity" placeholder="100m">
+                </div>
+                <div class="form-group">
+                  <label for="inputLocation">Location*</label>
+                  <input type="text" class="form-control" id="inputLocation" placeholder="51.5234,-114.5132">
+                </div>
+                <div class="form-group">
+                  <label for="inputDiscord">Discord</label>
+                  <input type="url" class="form-control" id="inputDiscord" placeholder="">
+                </div>
+                <div class="form-group">
+                  <label for="inputWebsite">Website</label>
+                  <input type="url" class="form-control" id="inputWebsite" placeholder="">
+                </div>
+                <div class="form-group">
+                  <a class="card-link text-secondary" href="#collapse" data-toggle="collapse">More options...</a>
+                  <div id="collapse" class="collapse">
+                      <div class="form-group">
+                        <label for="inputPlaceName">Place Name</label>
+                        <input type="url" class="form-control" id="inputPlaceName" placeholder="">
+                      </div>
+                      <div class="form-group">
+                        <label for="inputDetails">Details</label>
+                        <textarea class="form-control" id="inputDetails" rows="3" style="resize:none"></textarea>
+                      </div>
+                  </div>
+                </div>
+                <button type="submit" class="btn btn-primary">Submit</button>
+              </form>
+            </div>
+          </div>
+        </div>
+        <div class="col">
+          <div class="card h-100">
+            <div class="card-body text-left">
+              <h5>Current Events</h5>
+              <p class="card-text">Some quick example text to build on the card title</p>
+              <div id="eventHolder"></div>
+              <a href="#" class="card-link text-secondary">Another link</a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div id="about" class="jumbotron">
+        <h2>About</h2>
+        <p>People walk around everyday surrounded by events ranging from free and fun to professional and educational. However, these events go missed simply because the greater public is not aware of them.
+        </p>
+      </div>
+
+      <div id="contact" class="jumbotron">
+        <h2>Contact Us</h2>
+      </div>
+    </div>
+
+
+    <script src="https://www.gstatic.com/firebasejs/4.9.1/firebase.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/4.9.1/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/4.9.1/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/4.9.1/firebase-database.js"></script>
+
+    <script src="https://apis.google.com/js/platform.js" async defer></script>
+    <script src="/js/jquery.min.js"></script>
+    <script src="/js/popper.min.js"></script>
+    <script src="/js/bootstrap.min.js"></script>
+    <script src="/js/index.js"></script>
+  </body>
+</html>
