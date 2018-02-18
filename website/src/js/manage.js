@@ -10,7 +10,11 @@ var database = firebase.database().ref();
 var provider = new firebase.auth.GoogleAuthProvider();
 
 var setUser = false;
+var buttonsHTML = document.getElementById('buttons').innerHTML.split('\n');
+var submitButtonHTML = buttonsHTML[1];
+var closeButtonHTML = buttonsHTML[2];
 
+var defaultFormHTML = document.getElementById('formModalStatus').innerHTML;
 function validTitle(title) {
   return title !== '';
 }
@@ -28,13 +32,17 @@ function openNewEventForm(event) {
   event.preventDefault();
 
   if (!setUser) {
-    document.getElementById('formModalStatus').innerHTML = '<p>Please login above to make an event</p>';
+      document.getElementById('formModalStatus').innerHTML = '<p>Please login above to make an event</p>';
+      document.getElementById('buttons').innerHTML = closeButtonHTML;
     $('#formModal').modal();
+  } else {
+      document.getElementById('formModalStatus').innerHTML = defaultFormHTML;
+      document.getElementById('buttons').innerHTML = submitButtonHTML + '\n' + closeButtonHTML;
+      document.getElementById('submit').addEventListener('click', addEventToFirebase);
   }
     $('#formModal').modal();
 }
 
-document.getElementById('submit').addEventListener('click', addEventToFirebase);
 function addEventToFirebase(event) {
   event.preventDefault();
   var titl = document.getElementById('inputTitle').value;
@@ -65,6 +73,7 @@ function addEventToFirebase(event) {
 	
     } else {
 	document.getElementById('formModalStatus').innerHTML = '<p>Event created!</p>';
+	document.getElementById('buttons').innerHTML = closeButtonHTML;
 
 	firebase.database().ref('events').push({
             title: titl,
