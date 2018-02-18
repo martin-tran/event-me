@@ -125,11 +125,13 @@ function getEventsFromFirebase(event) {
   firebase.database().ref('events').once('value', function(snapshot) {
     if (snapshot.exists()) {
       document.getElementById('eventContainer').innerHTML = '';
+      var i = 0;
       snapshot.forEach(function(data) {
-        var val = data.val();
+	var val = data.val();
         if (val.uid === firebase.auth().currentUser.uid) {
-          var content = '';
-          content += '<div class="list-group-item list-group-item-action flex-column align-items-start">';
+
+	  var content = '';
+          content += '<div class="list-group-item list-group-item-action flex-column align-items-start" onclick="viewEventDetails(this)" id=event' + i + '>';
           content += '<div class="d-flex w-100 justify-content-between">';
           content += `<h5 class="mb-1">${val.title}</h5>`;
           content += `<small class="text-muted">${val.place_name}</small>`;
@@ -139,9 +141,39 @@ function getEventsFromFirebase(event) {
           content += '</div>';
           document.getElementById('eventContainer').innerHTML += content;
         }
+	i += 1;
       });
     } else {
       document.getElementById('eventContainer').innerHTML = '<p>No events at this time</p>';
+    }
+  })
+}
+
+function viewEventDetails(event) {
+  firebase.database().ref('events').once('value', function(snapshot) {
+    if (snapshot.exists()) {
+      document.getElementById('detailContainer').innerHTML = '';
+      var i = 0;
+      snapshot.forEach(function(data) {
+	var val = data.val();
+          if (val.uid === firebase.auth().currentUser.uid && ('event' + i) == event.id) {
+	      
+	  var content = '';
+          content += '<div class="list-group-item list-group-item-action flex-column align-items-start">';
+          content += '<div class="d-flex w-100 justify-content-between">';
+          content += `<h5 class="mb-1">${val.title}</h5>`;
+          content += `<p class="text-muted">${val.place_name}</p>`;
+          content += '</div>';
+	  content += `<p class="text-muted">Details: ${val.details}</p>`;
+          content += `<p class="text-muted">Proximity: ${val.proximity}</p>`;
+	  content += `<p class="text-muted">Website: ${val.website}</p>`;
+	  content += `<p class="text-muted">Discord: ${val.discord}</p>`;
+          content += `<p class="mb-1">${val.details}</p>`;
+          content += '</div>';
+	  document.getElementById('detailContainer').innerHTML += content;
+	}
+	i += 1;   
+      });
     }
   })
 }
