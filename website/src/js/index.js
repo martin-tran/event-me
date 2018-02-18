@@ -11,8 +11,8 @@ var provider = new firebase.auth.GoogleAuthProvider();
 
 var setUser = false;
 
-function validTitle(t) {
-  return t !== '';
+function validTitle(title) {
+  return title !== '';
 }
 
 function validNumber(number) {
@@ -41,9 +41,10 @@ function addEventToFirebase(event) {
     if (!validTitle(titl) || !validNumber(proxim) || !validLocation(loc)) {
       document.getElementById('formModalStatus').innerHTML = '<p>Please check values.</p>';
     } else {
+      console.log('being sent');
       document.getElementById('formModalStatus').innerHTML = '<p>Event created!</p>';
 
-      firebase.database().ref('events').push().set({
+      firebase.database().ref('events').push({
         title: titl,
         proximity: proxim,
         latitude: loc[0],
@@ -58,7 +59,6 @@ function addEventToFirebase(event) {
     $('#formModal').modal();
   }
 }
-
 
 document.getElementById('signin').addEventListener('click', googleAuthentication);
 function googleAuthentication(event) {
@@ -86,4 +86,29 @@ function googleAuthentication(event) {
       // An error happened.
     });
   }
+}
+
+document.getElementById('refreshEvents').addEventListener('click', getEventsFromFirebase);
+function getEventsFromFirebase(event) {
+  event.preventDefault();
+  firebase.database().ref('events').once('value', function(snapshot) {
+    if (snapshot.exists()) {
+      document.getElementById('eventContainer').innerHTML = '';
+      snapshot.forEach(function(data) {
+        var val = data.val();
+        var content = '';
+        content += '<div class="list-group-item list-group-item-action flex-column align-items-start">';
+        content += '<div class="d-flex w-100 justify-content-between">';
+        content += `<h5 class="mb-1">${val.title}</h5>`;
+        content += `<small class="text-muted">${val.place_name}</small>`;
+        content += '</div>';
+        content += `<small class="text-muted">Proximity: ${val.proximity}</small>`;
+        content += `<p class="mb-1">${val.details}</p>`;
+        content += '</div>';
+        document.getElementById('eventContainer').innerHTML += content;
+      });
+    } else {
+      document.getElementById('eventContainer').innerHTML = '<p>No events at this time</p>';
+    }
+  })
 }
