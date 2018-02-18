@@ -1,0 +1,11 @@
+<resources>
+    <string name="app_name">EventMi</string>
+    <string name="sign_first">To create an event, please sign in.</string>
+    <string name="event_name">Name of the event*</string>
+    <string name="proximity">Proximity (in m)*</string>
+    <string name="discord">Discord Link</string>
+    <string name="website">Website URL</string>
+    <string name="details">Details</string>
+    <string name="star_mandatory">*mandatory fields</string>
+    <string name="create">Create</string>
+</resources>
