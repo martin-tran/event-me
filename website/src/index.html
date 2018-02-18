@@ -22,8 +22,8 @@
         </button>
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
           <ul class="navbar-nav ml-auto">
-            <li class="nav-item">
-              <a class="nav-link" href="#createevent">Create Event</a>
+            <li id="navCreate" class="nav-item">
+              <a class="nav-link" href="#createevent" target="_self">Create Event</a>
             </li>
             <li class="nav-item">
               <a class="nav-link" href="#about">About</a>
@@ -32,7 +32,7 @@
               <a class="nav-link" href="#contact">Contact</a>
             </li>
             <li class="nav-item">
-              <a id="signin" class="nav-link" href="#">
+              <a id="navSignin" class="nav-link" href="#">
                 Sign In 
                 <i class="fa fa-google"></i>
               </a>
@@ -63,11 +63,11 @@
                 </div>
                 <div class="form-group">
                   <label for="inputProximity">Proximity (m)*</label>
-                  <input type="text" class="form-control" id="inputProximity" placeholder="100">
+                  <input type="text" class="form-control" id="inputProximity" placeholder="e.g. 100">
                 </div>
                 <div class="form-group">
                   <label for="inputLocation">Location*</label>
-                  <input type="text" class="form-control" id="inputLocation" placeholder="51.5234,-114.5132">
+                  <input type="text" class="form-control" id="inputLocation" placeholder="e.g. 51.5234,-114.5132">
                 </div>
                 <div class="form-group">
                   <label for="inputDiscord">Discord</label>
@@ -82,7 +82,7 @@
                   <div id="collapse" class="collapse">
                       <div class="form-group">
                         <label for="inputPlaceName">Place Name</label>
-                        <input type="url" class="form-control" id="inputPlaceName" placeholder="">
+                        <input type="text" class="form-control" id="inputPlaceName" placeholder="">
                       </div>
                       <div class="form-group">
                         <label for="inputDetails">Details</label>
@@ -98,10 +98,16 @@
         <div class="col">
           <div class="card h-100">
             <div class="card-body text-left">
-              <h5>Current Events</h5>
-              <p class="card-text">Some quick example text to build on the card title</p>
-              <div id="eventHolder"></div>
-              <a href="#" class="card-link text-secondary">Another link</a>
+              <div class="d-flex w-100 justify-content-between">
+                <h5 class="card-title">Current Events</h5>
+                <a id="refreshEvents" href="#">
+                  <i class="fa fa-refresh"></i>
+                </a>
+              </div>
+              <div class="list-group">
+                <div id="eventContainer">
+                </div>
+              </div>
             </div>
           </div>
         </div>
@@ -109,7 +115,6 @@
 
       <div class="modal fade" id="formModal" role="dialog">
         <div class="modal-dialog">
-        
           <!-- Modal content-->
           <div class="modal-content">
             <div class="modal-header">
@@ -123,21 +128,18 @@
               <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
             </div>
           </div>
-          
         </div>
       </div>
 
       <div id="about" class="jumbotron">
-        <h2>About</h2>
-        <p>People walk around everyday surrounded by events ranging from free and fun to professional and educational. However, these events go missed simply because the greater public is not aware of them.
-        </p>
+        <h2 class="display-6">About</h2>
+        <p>People walk around everyday surrounded by events ranging from free and fun to professional and educational. However, these events go missed simply because the greater public is not aware of them.</p>
       </div>
 
       <div id="contact" class="jumbotron">
-        <h2>Contact Us</h2>
+        <h2 class="display-6">Contact Us</h2>
       </div>
     </div>
-
 
     <script src="https://www.gstatic.com/firebasejs/4.9.1/firebase.js"></script>
     <script src="https://www.gstatic.com/firebasejs/4.9.1/firebase-app.js"></script>
